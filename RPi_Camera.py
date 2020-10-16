@@ -32,7 +32,6 @@ class RPi_Camera(object):
 
     def OpenCamera (self):
         self.driver = webdriver.Chrome(RPi_Camera.__PATH)
-        # self.driver = webdriver.Chrome(RPi_Camera.__PATH)  # Optional argument, if not specified will search path.
         self.driver.get(self.Url)
         # just a basic test to see if correct page is loaded
         if not 'CAMERA' in self.driver.title: return False
@@ -112,7 +111,7 @@ class RPi_Camera(object):
             EC.presence_of_element_located((By.ID, ConfigMenu))
         )
         select_box = self.driver.find_element_by_id(ConfigMenu)
-        # First click on the Network menu (to set mouse position?)
+        # First click on the Network menu (to set mouse position)
         select_box.click()
         # Then perform mouseover action relative to the Network menu
         # Any mouseclick event only works if the menuitem has been "enabled" via mouseover first
@@ -179,7 +178,7 @@ class RPi_Camera(object):
 
 if __name__ == "__main__":
     print("start test")
-    TestCam1 = RPi_Camera("192.168.0.240", "Sony") # test cameras use the default password
+    TestCam1 = RPi_Camera("192.168.0.240", "Sony") # these test cameras use the default password
     TestCam2 = RPi_Camera(, "192.168.0.241", "Sony")
     if RPi_Camera.OpenCamera ( TestCam1 ):
         print ( "Camera 1 Open" )
